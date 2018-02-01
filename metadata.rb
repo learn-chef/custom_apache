@@ -5,4 +5,3 @@ license          'all_rights'
 description      'Installs/Configures custom_apache'
 long_description 'Installs/Configures custom_apache'
 version          '0.1.0'
-

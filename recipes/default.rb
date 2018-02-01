@@ -26,7 +26,7 @@ end
 #################################################
 
 # Install additional Apache packages.
-packages = %w{ libapache2-modsecurity libapache2-mod-spamhaus }
+packages = %w( libapache2-modsecurity libapache2-mod-spamhaus )
 
 packages.each do |p|
   package 'install libapache2 package' do

@@ -1,9 +1,4 @@
-#################################################
-# This demonstrates CHEF-5: Custom Resource Cleanups
-# https://docs.chef.io/deprecations_custom_resource_cleanups.html
-#################################################
-
-property :homepage, String#, default: nil
+property :homepage, String
 
 default_action :create
 
@@ -17,14 +12,9 @@ action :create do
   # Install the package.
   package 'apache2'
 
-  # Start the service when the system boots.
+  # Enable the service when the system boots and start the service.
   service 'apache2' do
-    action :enable
-  end
-
-  # Start the service.
-  service 'apache2' do
-    action :start
+    action [:enable, :start]
   end
 
   #################################################

@@ -7,9 +7,7 @@
 require 'spec_helper'
 
 describe 'custom_apache::default' do
-
   context 'When all attributes are default, on an unspecified platform' do
-
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new
       runner.converge(described_recipe)
@@ -20,7 +18,7 @@ describe 'custom_apache::default' do
     end
 
     it 'creates the default web site' do
-      expect(chef_run).to create_custom_web_site 'default'
+      expect(chef_run).to create_custom_apache_site 'my_site'
     end
 
     it 'configures web content ownership' do
@@ -29,7 +27,7 @@ describe 'custom_apache::default' do
         group: 'www-content',
         mode: 0640,
       )
-      expect(chef_run).to_not create_directory('/var/www/html').with(
+      expect(chef_run).to create_directory('/var/www/html').with(
         owner: 'alice',
         group: 'www-content',
         mode: 0750,
