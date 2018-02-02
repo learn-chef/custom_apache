@@ -2,14 +2,14 @@
 # Cookbook Name:: custom_apache
 # Spec:: default
 #
-# Copyright (c) 2015 The Authors, All Rights Reserved.
+# Copyright (c) 2015-2018 The Authors, All Rights Reserved.
 
 require 'spec_helper'
 
 describe 'custom_apache::default' do
-  context 'When all attributes are default, on an unspecified platform' do
+  context 'When all attributes are default, on Ubuntu 16.04' do
     let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new
+      runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
       runner.converge(described_recipe)
     end
 
@@ -17,7 +17,7 @@ describe 'custom_apache::default' do
       chef_run # This should not raise an error
     end
 
-    it 'creates the default web site' do
+    it 'creates the my_site web site' do
       expect(chef_run).to create_custom_apache_site 'my_site'
     end
 
@@ -25,12 +25,12 @@ describe 'custom_apache::default' do
       expect(chef_run).to create_file('/var/www/html/index.html').with(
         owner: 'alice',
         group: 'www-content',
-        mode: 0640,
+        mode: 0640
       )
       expect(chef_run).to create_directory('/var/www/html').with(
         owner: 'alice',
         group: 'www-content',
-        mode: 0750,
+        mode: 0750
       )
     end
   end
