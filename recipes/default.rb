@@ -64,12 +64,12 @@ end
 file '/var/www/html/index.html' do
   owner content_owner
   group content_group
-  mode 0640 # -rw-r-----
+  mode 0644
 end
 
 # Configure the web content directory owner.
 directory '/var/www/html' do
   owner content_owner
   group content_group
-  mode 0750 # drwxr-x---
+  mode 0755
 end
