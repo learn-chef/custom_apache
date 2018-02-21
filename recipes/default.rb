@@ -2,7 +2,7 @@
 # Cookbook Name:: custom_apache
 # Recipe:: default
 #
-# Copyright (c) 2015 The Authors, All Rights Reserved.
+# Copyright (c) 2015-2018 The Authors, All Rights Reserved.
 
 # Load from node attributes some variables we'll need.
 site_name = node['site']['name']
