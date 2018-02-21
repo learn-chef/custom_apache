@@ -4,11 +4,6 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
-#################################################
-# This demonstrates CHEF-4: Some Attribute Methods.
-# https://docs.chef.io/deprecations_attributes.html
-#################################################
-
 # Load from node attributes some variables we'll need.
 site_name = node['site']['name']
 content_owner = node['site']['content']['owner']
@@ -20,29 +15,13 @@ apt_update 'Update the apt cache daily' do
   action :periodic
 end
 
-#################################################
-# This demonstrates CHEF-3694: resource cloning
-# https://docs.chef.io/deprecations_resource_cloning.html
-#################################################
-
 # Install additional Apache packages.
-packages = %w( libapache2-modsecurity libapache2-mod-spamhaus )
-
-packages.each do |p|
-  package 'install libapache2 package' do
-    package_name p
-  end
-end
+package %w( libapache2-modsecurity libapache2-mod-spamhaus )
 
 # Create the group that owns web content.
 group content_group do
   action :create
 end
-
-#################################################
-# This demonstrates CHEF-8: "Supports" metaproperty
-# https://docs.chef.io/deprecations_supports_property.html
-#################################################
 
 # Create the user that owns web content.
 user content_owner do

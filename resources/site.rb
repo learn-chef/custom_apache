@@ -17,13 +17,8 @@ action :create do
     action [:enable, :start]
   end
 
-  #################################################
-  # This demonstrates CHEF-19: Use of property_name inside of actions
-  # https://docs.chef.io/deprecations_namespace_collisions.html
-  #################################################
-
   # Set the contents of the homepage.
   file '/var/www/html/index.html' do
-    content homepage
+    content new_resource.homepage
   end
 end
