@@ -35,14 +35,14 @@ describe file('/var/www/html/index.html') do
   it { should be_file }
   it { should be_owned_by 'alice' }
   it { should be_grouped_into 'www-content' }
-  its('mode') { should cmp '0640' }
+  its('mode') { should cmp '0644' }
 end
 
 describe file('/var/www/html') do
   it { should be_directory }
   it { should be_owned_by 'alice' }
   it { should be_grouped_into 'www-content' }
-  its('mode') { should cmp '0750' }
+  its('mode') { should cmp '0755' }
 end
 
 describe port(80) do

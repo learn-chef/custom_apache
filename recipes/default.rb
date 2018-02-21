@@ -15,6 +15,7 @@ apt_update 'Update the apt cache daily' do
   action :periodic
 end
 
+# Install additional Apache packages.
 package %w( libapache2-modsecurity libapache2-mod-spamhaus )
 
 # Create the group that owns web content.

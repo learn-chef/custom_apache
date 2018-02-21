@@ -4,7 +4,8 @@ driver:
 
 provisioner:
   name: chef_zero
-  require_chef_omnibus: 13.7.16
+  product_name: chef
+  product_version: 13.7.16
   deprecations_as_errors: true
 
 verifier:
@@ -17,7 +18,4 @@ suites:
   - name: default
     run_list:
       - recipe[custom_apache::default]
-    verifier:
-      inspec_tests:
-        - test/smoke/default
     attributes:
