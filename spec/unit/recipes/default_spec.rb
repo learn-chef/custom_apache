@@ -25,12 +25,12 @@ describe 'custom_apache::default' do
       expect(chef_run).to create_file('/var/www/html/index.html').with(
         owner: 'alice',
         group: 'www-content',
-        mode: 0644,
+        mode: 0644
       )
       expect(chef_run).to create_directory('/var/www/html').with(
         owner: 'alice',
         group: 'www-content',
-        mode: 0755,
+        mode: 0755
       )
     end
   end
