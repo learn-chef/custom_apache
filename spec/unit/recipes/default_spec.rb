@@ -7,7 +7,7 @@
 require 'spec_helper'
 
 describe 'custom_apache::default' do
-  context 'When all attributes are default, on an unspecified platform' do
+  context 'When all attributes are default, on Ubuntu 16.04' do
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
       runner.converge(described_recipe)
@@ -17,7 +17,7 @@ describe 'custom_apache::default' do
       chef_run # This should not raise an error
     end
 
-    it 'creates the default web site' do
+    it 'creates the my_site web site' do
       expect(chef_run).to create_custom_apache_site 'my_site'
     end
 
