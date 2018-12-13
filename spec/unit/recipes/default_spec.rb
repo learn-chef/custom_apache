@@ -7,9 +7,9 @@
 require 'spec_helper'
 
 describe 'custom_apache::default' do
-  context 'When all attributes are default, on an unspecified platform' do
+  context 'When all attributes are default, on Ubuntu 16.04' do
     let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new
+      runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
       runner.converge(described_recipe)
     end
 
@@ -25,12 +25,12 @@ describe 'custom_apache::default' do
       expect(chef_run).to create_file('/var/www/html/index.html').with(
         owner: 'alice',
         group: 'www-content',
-        mode: 0644,
+        mode: 0644
       )
       expect(chef_run).to create_directory('/var/www/html').with(
         owner: 'alice',
         group: 'www-content',
-        mode: 0755,
+        mode: 0755
       )
     end
   end

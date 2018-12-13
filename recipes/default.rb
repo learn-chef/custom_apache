@@ -10,9 +10,9 @@
 #################################################
 
 # Load from node attributes some variables we'll need.
-site_name = node.site.name
-content_owner = node.site.content.owner
-content_group = node.site.content.group
+site_name = node['site']['name']
+content_owner = node['site']['content']['owner']
+content_group = node['site']['content']['group']
 
 # Ensure the apt cache is up-to-date.
 apt_update 'Update the apt cache daily' do
@@ -49,10 +49,8 @@ user content_owner do
   group content_group
   home "/home/#{content_owner}"
   shell '/bin/bash'
-  supports({
-    manage_home: true,
-    non_unique: false
-  })
+  manage_home true
+  non_unique false
 end
 
 # Use the custom site resource to configure the website.
